@@ -1,4 +1,5 @@
 #include <stdio.h>
+
 #define IN 1
 #define OUT 0
 
@@ -9,19 +10,18 @@ void main()
     state = OUT;
     nl = nw = nc = 0;
 
-    while ((c = getchar()) != EOF)
-    {
+    while ((c = getchar()) != EOF){
         ++nc;
-        if (c == '\n')
+        if (c == '\n'){
             ++nl;
-        if (c == ' ' || c == '\n' || c == '\t') // inside a word
+        }
+        if (c == ' ' || c == '\n' || c == '\t')
             state = OUT;
-        else if (state == OUT)
-        {
+        else if (state == OUT){
             state = IN;
             ++nw;
         }
     }
-
-    printf("New lines: %d\nWords: %d\nCharacters: %d\n", nl, nw, nc);
+    printf("Number of lines: %d\n", nl);
+    printf("Number of words: %d\n", nw);
 }
